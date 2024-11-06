@@ -5,20 +5,23 @@ namespace App\Http\Controllers\SupportTeam;
 use App\Helpers\Qs;
 use App\Http\Controllers\Controller;
 use App\Repositories\BookRepo;
+use App\Repositories\categoryRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class BookController extends Controller
+class CategoryController extends Controller
 {
-    protected  $book;
+    protected  $category, $book;
 
-    public function __construct(BookRepo $book)
+    public function __construct(CategoryRepo $category, BookRepo $book)
     {
         $this->middleware('teamSA', ['except' => ['destroy',] ]);
         $this->middleware('super_admin', ['only' => ['destroy',] ]);
 
+        $this->category = $category;
         $this->book = $book;
     }
 
@@ -29,8 +32,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $d['books'] = $this->book->getAll();
-        return view('pages.support_team.books.index', $d);
+        $d['categories'] = $this->category->getAll();
+        return view('pages.support_team.categories.index', $d);
     }
 
     /**
@@ -53,7 +56,9 @@ class BookController extends Controller
     {
         $data = $request->all();
 
-        $book = $this->book->create($data);
+        Storage::makeDirectory('files/'.$data['name']);
+
+        $category = $this->category->create($data);
 
         return Qs::jsonStoreOk();
     }
@@ -77,9 +82,10 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $d['s'] = $sub = $this->book->find($id);
+        $d['s'] = $sub = $this->category->find($id);
+        $d['books'] = $this->book->getAll();
 
-        return is_null($sub) ? Qs::goWithDanger('books.index') : view('pages.support_team.books.edit', $d);
+        return is_null($sub) ? Qs::goWithDanger('categories.index') : view('pages.support_team.categories.edit', $d);
     }
 
     /**
@@ -97,11 +103,11 @@ class BookController extends Controller
             $photo = $req->file('photo');
             $f = Qs::getFileMetaData($photo);
             $f['name'] = $f['name'].'.'. $f['ext'];
-            $f['path'] = $photo->storeAs('uploads/book/', $f['name']);
+            $f['path'] = $photo->storeAs('uploads/category/', $f['name']);
             $data['logo'] = asset('storage/' . $f['path']);
         }
 
-        $this->book->update($id, $data);
+        $this->category->update($id, $data);
 
         //return back()->with('flash_success', __('msg.update_ok'));
 
@@ -116,7 +122,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $this->book->find($id)->delete();
+        $this->category->find($id)->delete();
 
         return back()->with('flash_success', __('msg.delete_ok'));
     }

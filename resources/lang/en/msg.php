@@ -3,8 +3,8 @@ return
 [
     'denied' => 'ACCESS DENIED FOR UNAUTHORIZED ACTION',
     'user_invalid' => 'Both Username and Email cannot be blank',
-    'update_ok' => 'Record Updated Successfully',
-    'store_ok' => 'Record Created Successfully',
+    'update_ok' => 'Cập nhật thành công',
+    'store_ok' => 'Tạo thành công',
     'del_ok' => 'Xóa Thành Công',
     'delete_ok' => 'Xóa Thành Công',
     'pu_reset' => 'Password Reset Successfully to user',

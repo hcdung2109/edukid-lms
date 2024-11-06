@@ -3,34 +3,34 @@
 namespace App\Repositories;
 
 
-use App\Models\School;
+use App\Models\Book;
 
-class SchoolRepo
+class BookRepo
 {
 
     public function create($data)
     {
-        return School::create($data);
+        return Book::create($data);
     }
 
     public function getAll($order = 'name')
     {
-        return School::orderBy($order)->get();
+        return Book::orderBy($order)->get();
     }
 
-    public function getSchool($data)
+    public function getBook($data)
     {
-        return School::where($data)->get();
+        return Book::where($data)->get();
     }
 
     public function update($id, $data)
     {
-        return School::find($id)->update($data);
+        return Book::find($id)->update($data);
     }
 
     public function find($id)
     {
-        return School::find($id);
+        return Book::find($id);
     }
 
 

@@ -22,6 +22,10 @@ Route::group(['middleware' => 'auth'], function () {
     /*************** Support Team *****************/
     Route::group(['namespace' => 'SupportTeam',], function(){
 
+        Route::group(['prefix' => 'filemanager'], function () {
+            \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
+
         /*************** Students *****************/
         Route::group(['prefix' => 'students'], function(){
             Route::get('reset_pass/{st_id}', 'StudentRecordController@reset_pass')->name('st.reset_pass');
@@ -135,6 +139,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 
+        Route::resource('categories', 'CategoryController');
+        Route::resource('books', 'BookController');
         Route::resource('schools', 'SchoolController');
         Route::resource('students', 'StudentRecordController');
         Route::resource('users', 'UserController');

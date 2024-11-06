@@ -1,4 +1,5 @@
 ## **Laravel School Management System** 
+https://github.com/4jean/lav_sms.git
 
 **LAVSMS** is developed for educational institutions like schools and colleges built on Laravel 8
 

@@ -3,34 +3,34 @@
 namespace App\Repositories;
 
 
-use App\Models\Book;
+use App\Models\Category;
 
-class BookRepo
+class CategoryRepo
 {
 
     public function create($data)
     {
-        return Book::create($data);
+        return Category::create($data);
     }
 
     public function getAll($order = 'name')
     {
-        return Book::orderBy($order)->get();
+        return Category::orderBy($order)->get();
     }
 
-    public function getBook($data)
+    public function getCategory($data)
     {
-        return Book::where($data)->get();
+        return Category::where($data)->get();
     }
 
     public function update($id, $data)
     {
-        return Book::find($id)->update($data);
+        return Category::find($id)->update($data);
     }
 
     public function find($id)
     {
-        return Book::find($id);
+        return Category::find($id);
     }
 
 

@@ -1,41 +1,28 @@
 @extends('layouts.master')
-@section('page_title', 'Quản Lý Người Dùng')
+@section('page_title', 'Quản lý người dùng')
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Danh Sách Người Dùng</h6>
+            <h6 class="card-title">Quản lý người dùng</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">
-                <li class="nav-item">
-                    <a href="#new-user" class="nav-link active" data-toggle="tab">Thêm mới</a>
-                </li>
-
+                <li class="nav-item"><a href="#new-user" class="nav-link active" data-toggle="tab">Thêm mới</a></li>
                 @foreach($user_types as $ut)
                     <li class="nav-item">
                         <a href="#ut-{{Qs::hash($ut->id)}}" class="nav-link" data-toggle="tab">{{ $ut->name }}</a>
                     </li>
                 @endforeach
-
-<!--                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Danh sách</a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        @foreach($user_types as $ut)
-                            <a href="#ut-{{ Qs::hash($ut->id) }}" class="dropdown-item"
-                               data-toggle="tab">{{ $ut->name }}</a>
-                        @endforeach
-                    </div>
-                </li>-->
             </ul>
 
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="new-user">
-                    <form method="post" enctype="multipart/form-data" class="wizard-form steps-validation ajax-store"
-                          action="{{ route('users.store') }}" data-fouc>
+                    <form method="post" enctype="multipart/form-data" class="wizard-form steps-validation ajax-store" action="{{ route('users.store') }}" data-fouc>
                         @csrf
+                        <h6>Thông tin cá nhân</h6>
                         <fieldset>
                             <div class="row">
                                 <div class="col-md-6">
@@ -172,7 +159,7 @@
                 </div>
 
                 @foreach($user_types as $ut)
-                    <div class="tab-pane fade show" id="ut-{{Qs::hash($ut->id)}}">
+                    <div class="tab-pane fade" id="ut-{{Qs::hash($ut->id)}}">
                         <table class="table datatable-button-html5-columns">
                             <thead>
                             <tr>

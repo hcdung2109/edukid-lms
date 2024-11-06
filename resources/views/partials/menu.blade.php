@@ -214,14 +214,22 @@
                 </li>
                 @endif
 
+                @if(Qs::userIsTeamSA())
+                    <li class="nav-item">
+                        <a href="/filemanager" class="nav-link {{ in_array(Route::currentRouteName(), ['filemanager']) ? 'active' : '' }}"><i class="icon-upload"></i> <span> Upload Tài liệu</span></a>
+                    </li>
+                @endif
 
-                {{--End Exam--}}
 
                 @include('pages.'.Qs::getUserType().'.menu')
 
+                <li class="nav-item">
+                    <a href="{{ route('categories.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['categories.index','categories.edit']) ? 'active' : '' }}"><i class="icon-list"></i> <span> QL Tài liệu</span></a>
+                </li>
+
                 {{--Manage Account--}}
                 <li class="nav-item">
-                    <a href="{{ route('my_account') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['my_account']) ? 'active' : '' }}"><i class="icon-user"></i> <span>My Account</span></a>
+                    <a href="{{ route('my_account') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['my_account']) ? 'active' : '' }}"><i class="icon-user"></i> <span>Tài khoản</span></a>
                 </li>
 
                 </ul>

@@ -24,31 +24,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($books as $d)
+                            @foreach($categories as $d)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->name }}</td>
                                     <td class="text-center">
-                                        <div class="list-icons">
-                                            <div class="dropdown">
-                                                <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-
-                                                <div class="dropdown-menu dropdown-menu-left">
-                                                    @if(Qs::userIsTeamSA())
-                                                    {{--Edit--}}
-                                                    <a href="{{ route('books.edit', $d->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
-                                                   @endif
-                                                        @if(Qs::userIsSuperAdmin())
-                                                    {{--Delete--}}
-                                                    <a id="{{ $d->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
-                                                    <form method="post" id="item-delete-{{ $d->id }}" action="{{ route('books.destroy', $d->id) }}" class="hidden">@csrf @method('delete')</form>
-                                                        @endif
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a style="" href="{{ route('categories.edit', $d->id) }}" class="btn btn-primary">Danh Sách Bài Học</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,7 +41,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <form class="ajax-store" method="post" action="{{ route('books.store') }}" enctype="multipart/form-data">
+                            <form class="ajax-store" method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label font-weight-semibold">Tên tài liệu <span class="text-danger">*</span></label>

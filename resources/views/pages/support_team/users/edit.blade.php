@@ -34,7 +34,7 @@
                                 <select required data-placeholder="Select User" class="form-control select"
                                         name="user_type" id="user_type">
                                     @foreach($user_types as $ut)
-                                        <option {{ $ut->id == 3 ? 'selected' : '' }} value="{{ Qs::hash($ut->id) }}">{{ $ut->name }}</option>
+                                        <option {{ $ut->title == $user->user_type ? 'selected' : '' }} value="{{ Qs::hash($ut->id) }}">{{ $ut->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
