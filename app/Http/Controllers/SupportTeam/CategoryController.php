@@ -18,8 +18,8 @@ class CategoryController extends Controller
 
     public function __construct(CategoryRepo $category, BookRepo $book)
     {
-        $this->middleware('teamSA', ['except' => ['destroy',] ]);
-        $this->middleware('super_admin', ['only' => ['destroy',] ]);
+        //$this->middleware('teamSA', ['except' => ['destroy',] ]);
+        //$this->middleware('super_admin', ['only' => ['destroy',] ]);
 
         $this->category = $category;
         $this->book = $book;

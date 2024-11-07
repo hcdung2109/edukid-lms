@@ -4,10 +4,13 @@ namespace App\Http\Controllers\SupportTeam;
 
 use App\Helpers\Qs;
 use App\Http\Controllers\Controller;
+use App\Models\Book;
+use App\Models\Category;
 use App\Repositories\BookRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BookController extends Controller
@@ -16,9 +19,6 @@ class BookController extends Controller
 
     public function __construct(BookRepo $book)
     {
-        $this->middleware('teamSA', ['except' => ['destroy',] ]);
-        $this->middleware('super_admin', ['only' => ['destroy',] ]);
-
         $this->book = $book;
     }
 
@@ -49,9 +49,21 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        $data = $request->all();
+        $data = $req->all();
+
+        $cate = Category::find($req->category_id);
+
+        Storage::makeDirectory('files/'.$cate->name.'/'.$req->name);
+
+        if($req->hasFile('document')) {
+            $file = $req->file('document');
+            $f = Qs::getFileMetaData($file);
+            $f['name'] = $req->name.'.'. $f['ext'];
+            $f['path'] = $file->storeAs('files/'.$cate->name.'/'.$req->name, $f['name']);
+            $data['document'] = $f['path'];
+        }
 
         $book = $this->book->create($data);
 
@@ -98,7 +110,7 @@ class BookController extends Controller
             $f = Qs::getFileMetaData($file);
             $f['name'] = $f['name'].'.'. $f['ext'];
             $f['path'] = $file->storeAs('uploads/book/', $f['name']);
-            $data['logo'] = asset('storage/' . $f['path']);
+            $data['logo'] = $f['path'];
         }
 
         $this->book->update($id, $data);
@@ -119,5 +131,31 @@ class BookController extends Controller
         $this->book->find($id)->delete();
 
         return back()->with('flash_success', __('msg.delete_ok'));
+    }
+
+    public function viewDocument($id)
+    {
+        $book = Book::find(9);
+
+        $filePath = storage_path('files/7.png');
+        //$filePath = realpath($filePath);
+
+// Debugging
+        dd([
+            'filePath' => $filePath,
+            'realpath' => realpath($filePath),
+            'file_exists' => file_exists($filePath),
+            'is_readable' => is_readable($filePath),
+        ]);
+
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found.');
+        }
+
+// If file exists, proceed to serve it
+        return response()->file($filePath, [
+            'Content-Disposition' => 'inline',
+            'Content-Type' => mime_content_type($filePath),
+        ]);
     }
 }

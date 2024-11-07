@@ -29,7 +29,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->name }}</td>
                                 <td class="text-center">
-                                    <a style="" href="{{ route('categories.edit', $d->id) }}" class="btn btn-primary"><i class="fa fa-link"></i> Tài liệu</a>
+                                    <a style="" href="{{ route('books.viewDocument', ['id' => $d->id]) }}" class="btn btn-primary"><i class="fa fa-link"></i>Xem giáo trình</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -41,8 +41,10 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <form class="ajax-update" method="post" action="{{ route('books.update', $s->id) }}">
-                                @csrf @method('PUT')
+                            <form class="ajax-update" method="post" action="{{ route('books.store') }}">
+                                @csrf
+                                <input type="hidden" name="category_id" value="{{ $s->id }}">
+
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label font-weight-semibold">Tên Bài Học <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">

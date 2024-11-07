@@ -34,10 +34,10 @@ class UserController extends Controller
     public function index()
     {
         $ut = $this->user->getAllTypes();
-        $ut2 = $ut->where('level', '>', 2);
+        //$ut2 = $ut->where('level', '>', 2);
 
         $d['schools'] = $this->school->getAll();
-        $d['user_types'] = Qs::userIsAdmin() ? $ut2 : $ut;
+        $d['user_types'] = $ut;
         $d['states'] = $this->loc->getStates();
         $d['users'] = $this->user->getPTAUsers();
         $d['nationals'] = $this->loc->getAllNationals();

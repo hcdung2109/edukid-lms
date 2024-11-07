@@ -21,7 +21,9 @@
             <div class="card-body">
                 <div class="media">
                     <div class="mr-3">
-                        <a href="{{ route('my_account') }}"><img src="{{ Auth::user()->photo }}" width="38" height="38" class="rounded-circle" alt="photo"></a>
+                        <a href="{{ route('my_account') }}">
+                            <img src="{{ Auth::user()->photo }}" width="38" height="38" class="rounded-circle" alt="photo">
+                        </a>
                     </div>
 
                     <div class="media-body">
@@ -44,15 +46,17 @@
             <ul class="nav nav-sidebar" data-nav-type="accordion">
 
                 <!-- Main -->
+                @if(Qs::userIsSuperAdmin())
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ (Route::is('dashboard')) ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ (Route::is('dashboard')) ? 'active' : '' }}">
                         <i class="icon-home4"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+                @endif
 
                 {{--Academics--}}
-                @if(Qs::userIsAcademic())
+                @if(Qs::userIsAcademic() && Qs::userIsSuperAdmin())
                     <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['tt.index', 'ttr.edit', 'ttr.show', 'ttr.manage']) ? 'nav-item-expanded nav-item-open' : '' }} ">
                         <a href="#" class="nav-link"><i class="icon-graduation2"></i> <span> Academics</span></a>
 
@@ -65,7 +69,7 @@
                     @endif
 
                 {{--Administrative--}}
-                @if(Qs::userIsAdministrative())
+                @if(Qs::userIsAdministrative() && Qs::userIsSuperAdmin())
                     <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.create', 'payments.invoice', 'payments.receipts', 'payments.edit', 'payments.manage', 'payments.show',]) ? 'nav-item-expanded nav-item-open' : '' }} ">
                         <a href="#" class="nav-link"><i class="icon-office"></i> <span> Administrative</span></a>
 
@@ -91,7 +95,7 @@
                 @endif
 
                 {{--Manage Students--}}
-                @if(Qs::userIsTeamSAT())
+                @if(Qs::userIsTeamSAT() && Qs::userIsSuperAdmin())
                     <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['students.create', 'students.list', 'students.edit', 'students.show', 'students.promotion', 'students.promotion_manage', 'students.graduated']) ? 'nav-item-expanded nav-item-open' : '' }} ">
                         <a href="#" class="nav-link"><i class="icon-users"></i> <span> Students</span></a>
 
@@ -144,6 +148,19 @@
                         <a href="{{ route('schools.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['schools.index','schools.edit']) ? 'active' : '' }}"><i class="icon-list"></i> <span> QL Trường / Trung tâm</span></a>
                     </li>
 
+                @endif
+
+                @if(Qs::userIsTeamSA() && Qs::userIsSuperAdmin())
+                    {{--Manage Users--}}
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index', 'users.show', 'users.edit']) ? 'active' : '' }}"><i class="icon-users4"></i><span>QL Người dùng</span></a>
+                    </li>
+
+                    {{--Manage Classes--}}
+                    <li class="nav-item">
+                        <a href="{{ route('schools.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['schools.index','schools.edit']) ? 'active' : '' }}"><i class="icon-list"></i> <span> QL Trường / Trung tâm</span></a>
+                    </li>
+
                     {{--Manage Classes--}}
                     <li class="nav-item">
                         <a href="{{ route('classes.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['classes.index','classes.edit']) ? 'active' : '' }}"><i class="icon-windows2"></i> <span> Classes</span></a>
@@ -166,7 +183,7 @@
                 @endif
 
                 {{--Exam--}}
-                @if(Qs::userIsTeamSAT())
+                @if(Qs::userIsTeamSAT() && Qs::userIsSuperAdmin())
                 <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['exams.index', 'exams.edit', 'grades.index', 'grades.edit', 'marks.index', 'marks.manage', 'marks.bulk', 'marks.tabulation', 'marks.show', 'marks.batch_fix',]) ? 'nav-item-expanded nav-item-open' : '' }} ">
                     <a href="#" class="nav-link"><i class="icon-books"></i> <span> Exams</span></a>
 
@@ -216,7 +233,7 @@
 
                 @if(Qs::userIsTeamSA())
                     <li class="nav-item">
-                        <a href="/filemanager" class="nav-link {{ in_array(Route::currentRouteName(), ['filemanager']) ? 'active' : '' }}"><i class="icon-upload"></i> <span> Upload Tài liệu</span></a>
+                        <a target="_blank" href="/filemanager" class="nav-link {{ in_array(Route::currentRouteName(), ['filemanager']) ? 'active' : '' }}"><i class="icon-upload"></i> <span> Upload Tài liệu</span></a>
                     </li>
                 @endif
 

@@ -139,6 +139,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 
+        Route::group(['prefix' => 'books'], function(){
+            Route::get('view-document/{id}', 'BookController@viewDocument')->name('books.viewDocument');
+        });
+
         Route::resource('categories', 'CategoryController');
         Route::resource('books', 'BookController');
         Route::resource('schools', 'SchoolController');

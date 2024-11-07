@@ -6,6 +6,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
+setlocale(LC_ALL, 'en_US.UTF-8');
 
 define('LARAVEL_START', microtime(true));
 
