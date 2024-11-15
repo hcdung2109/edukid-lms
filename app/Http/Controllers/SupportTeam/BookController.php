@@ -78,7 +78,15 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = Book::find($id);
+
+        $category = Category::find($book->category_id);
+
+        $files = Storage::allFiles('files/'.$category->name.'/'.$book->name);
+        //dd($files);
+
+        return view('pages.support_team.books.show', compact('files','id'));
+
     }
 
     /**
@@ -133,29 +141,8 @@ class BookController extends Controller
         return back()->with('flash_success', __('msg.delete_ok'));
     }
 
-    public function viewDocument($id)
+    public function document($id)
     {
-        $book = Book::find(9);
 
-        $filePath = storage_path('files/7.png');
-        //$filePath = realpath($filePath);
-
-// Debugging
-        dd([
-            'filePath' => $filePath,
-            'realpath' => realpath($filePath),
-            'file_exists' => file_exists($filePath),
-            'is_readable' => is_readable($filePath),
-        ]);
-
-        if (!file_exists($filePath)) {
-            abort(404, 'File not found.');
-        }
-
-// If file exists, proceed to serve it
-        return response()->file($filePath, [
-            'Content-Disposition' => 'inline',
-            'Content-Type' => mime_content_type($filePath),
-        ]);
     }
 }

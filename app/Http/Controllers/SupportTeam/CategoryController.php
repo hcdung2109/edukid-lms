@@ -83,7 +83,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $d['s'] = $sub = $this->category->find($id);
-        $d['books'] = $this->book->getAll();
+        $d['books'] = $this->book->getBook(['category_id' => $id]);
 
         return is_null($sub) ? Qs::goWithDanger('categories.index') : view('pages.support_team.categories.edit', $d);
     }

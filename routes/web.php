@@ -6,7 +6,6 @@ Auth::routes();
 Route::get('/privacy-policy', 'HomeController@privacy_policy')->name('privacy_policy');
 Route::get('/terms-of-use', 'HomeController@terms_of_use')->name('terms_of_use');
 
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@dashboard')->name('home');
@@ -137,10 +136,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('show/{id}/{year}', 'MarkController@show')->name('marks.show');
             Route::get('print/{id}/{exam_id}/{year}', 'MarkController@print_view')->name('marks.print');
 
-        });
-
-        Route::group(['prefix' => 'books'], function(){
-            Route::get('view-document/{id}', 'BookController@viewDocument')->name('books.viewDocument');
         });
 
         Route::resource('categories', 'CategoryController');

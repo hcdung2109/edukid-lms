@@ -29,7 +29,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $d->name }}</td>
                                 <td class="text-center">
-                                    <a style="" href="{{ route('books.viewDocument', ['id' => $d->id]) }}" class="btn btn-primary"><i class="fa fa-link"></i>Xem giáo trình</a>
+                                    <a style="" href="{{ route('books.show', $d->id) }}" class="btn btn-primary"><i class="fa fa-link"></i>Xem giáo trình</a>
                                 </td>
                             </tr>
                         @endforeach
