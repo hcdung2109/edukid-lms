@@ -41,11 +41,11 @@
                                                 <div class="dropdown-menu dropdown-menu-left">
                                                     @if(Qs::userIsTeamSA())
                                                     {{--Edit--}}
-                                                    <a href="{{ route('dorms.edit', $d->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                    <a href="{{ route('dorms.edit', $d->id) }}" class="dropdown-item"><i class="icon-trash"></i> Chỉnh sửa</a>
                                                    @endif
                                                         @if(Qs::userIsSuperAdmin())
                                                     {{--Delete--}}
-                                                    <a id="{{ $d->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                    <a id="{{ $d->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Xóa</a>
                                                     <form method="post" id="item-delete-{{ $d->id }}" action="{{ route('dorms.destroy', $d->id) }}" class="hidden">@csrf @method('delete')</form>
                                                         @endif
 
