@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SupportTeam;
 
 use App\Helpers\Qs;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Repositories\BookRepo;
 use App\Repositories\categoryRepo;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -122,8 +123,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $this->category->find($id)->delete();
+        $item = Category::find($id);
 
-        return back()->with('flash_success', __('msg.delete_ok'));
+        if (!$item) {
+            return response()->json(['message' => 'Item not found'], 404);
+        }
+
+        $item->delete();
+
+        return response()->json(['message' => 'Item deleted successfully'], 200);
     }
 }

@@ -111,9 +111,7 @@ class SchoolController extends Controller
 
         $this->school->update($id, $data);
 
-        //return back()->with('flash_success', __('msg.update_ok'));
-
-        return Qs::jsonUpdateOk();
+        return redirect()->route('schools.index')->with('flash_success', __('msg.update_ok'));
     }
 
     /**
