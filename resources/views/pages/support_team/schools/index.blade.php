@@ -86,7 +86,7 @@
                         <td class="text-center">
                             @if(Qs::userIsTeamSA())
                                 {{--Edit--}}
-                                <a href="{{ route('schools.show', $d->id) }}" class="btn btn-warning"><i class="icon-table2"></i> Lớp học</a>
+                                <a href="{{ route('classes.list.school', $d->id) }}" class="btn btn-warning"><i class="icon-table2"></i> Lớp học</a>
                                 <a href="{{ route('schools.edit', $d->id) }}" class="btn btn-primary"><i class="icon-trash"></i> Chỉnh sửa</a>
                             @endif
 

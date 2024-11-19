@@ -68,4 +68,12 @@ class MyClassController extends Controller
         return back()->with('flash_success', __('msg.del_ok'));
     }
 
+    public function listBySchool($school_id)
+    {
+        $d['my_classes'] = $this->my_class->getMC(['school_id' => $school_id]);
+        $d['class_types'] = $this->my_class->getTypes();
+
+        return view('pages.support_team.classes.listBySchool', $d);
+    }
+
 }
