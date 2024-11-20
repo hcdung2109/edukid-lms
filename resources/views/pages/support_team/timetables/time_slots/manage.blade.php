@@ -29,11 +29,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right">
                                     {{--Edit--}}
-                                    <a href="{{ route('ts.edit', $tms->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                    <a href="{{ route('ts.edit', $tms->id) }}" class="dropdown-item"><i class="icon-trash"></i> Chỉnh sửa</a>
 
                                     {{--Delete--}}
                                     @if(Qs::userIsSuperAdmin())
-                                        <a id="{{ $tms->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                        <a id="{{ $tms->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Xóa</a>
                                         <form method="post" id="item-delete-{{ $tms->id }}" action="{{ route('ts.destroy', $tms->id) }}" class="hidden">@csrf @method('delete')</form>
                                     @endif
 

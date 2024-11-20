@@ -195,7 +195,7 @@
                                                        class="dropdown-item"><i class="icon-eye"></i> View Profile</a>
                                                     {{--Edit--}}
                                                     <a href="{{ route('users.edit', Qs::hash($u->id)) }}"
-                                                       class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                       class="dropdown-item"><i class="icon-trash"></i> Chỉnh sửa</a>
                                                     @if(Qs::userIsSuperAdmin())
 
                                                         <a href="{{ route('users.reset_pass', Qs::hash($u->id)) }}"

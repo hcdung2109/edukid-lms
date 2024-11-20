@@ -95,7 +95,7 @@
                 @endif
 
                 {{--Manage Students--}}
-                @if(Qs::userIsTeamSAT() && Qs::userIsSuperAdmin())
+                @if(Qs::userIsSuperAdmin())
                     <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['students.create', 'students.list', 'students.edit', 'students.show', 'students.promotion', 'students.promotion_manage', 'students.graduated']) ? 'nav-item-expanded nav-item-open' : '' }} ">
                         <a href="#" class="nav-link"><i class="icon-users"></i> <span> Students</span></a>
 
@@ -154,11 +154,6 @@
                     {{--Manage Users--}}
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index', 'users.show', 'users.edit']) ? 'active' : '' }}"><i class="icon-users4"></i><span>QL Người dùng</span></a>
-                    </li>
-
-                    {{--Manage Classes--}}
-                    <li class="nav-item">
-                        <a href="{{ route('schools.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['schools.index','schools.edit']) ? 'active' : '' }}"><i class="icon-list"></i> <span> QL Trường / Trung tâm</span></a>
                     </li>
 
                     {{--Manage Classes--}}

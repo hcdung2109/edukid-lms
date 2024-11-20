@@ -93,9 +93,9 @@
 
                                                 <div class="dropdown-menu dropdown-menu-left">
                                                     {{--Edit--}}
-                                                <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-trash"></i> Chỉnh sửa</a>
                                                     {{--Delete--}}
-                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Xóa</a>
                                                     <form method="post" id="item-delete-{{ $p->id }}" action="{{ route('payments.destroy', $p->id) }}" class="hidden">@csrf @method('delete')</form>
 
                                                 </div>
@@ -142,9 +142,9 @@
 
                                                 <div class="dropdown-menu dropdown-menu-left">
                                                     {{--Edit--}}
-                                                    <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                    <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-trash"></i> Chỉnh sửa</a>
                                                     {{--Delete--}}
-                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Xóa</a>
                                                     <form method="post" id="item-delete-{{ $p->id }}" action="{{ route('payments.destroy', $p->id) }}" class="hidden">@csrf @method('delete')</form>
 
                                                 </div>

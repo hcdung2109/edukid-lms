@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form class="ajax-update" method="post" action="{{ route('schools.update', $s->id) }}">
+                    <form class="" method="post" action="{{ route('schools.update', $s->id) }}">
                         @csrf @method('PUT')
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label font-weight-semibold">Tên trường / Trung tâm <span class="text-danger">*</span></label>
