@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PhpOffice\PhpWord\IOFactory;
 
 class BookController extends Controller
 {
@@ -95,11 +96,15 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        $d['s'] = $sub = $this->book->find($id);
+        $filename = $request->filename;
+        $book = $this->book->find($id);
+        $category =  Category::find($book->category_id);
 
-        return is_null($sub) ? Qs::goWithDanger('books.index') : view('pages.support_team.books.edit', $d);
+        $file = Storage::path('files/'.$category->name.'/'.$book->name.'/'.$filename);
+
+        return view('pages.support_team.books.edit', compact('file', 'book', 'filename', 'category'));
     }
 
     /**

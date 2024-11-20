@@ -42,5 +42,6 @@
 <!-- /theme JS files -->
 
 <script src=" {{ asset('assets/js/custom.js') }} "></script>
+<script src=" {{ asset('pspdfkit/pspdfkit.js') }} "></script>
 
 @include('partials.js.custom_js')
