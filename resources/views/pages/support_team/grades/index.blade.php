@@ -24,7 +24,7 @@
                                 <th>Grade Type</th>
                                 <th>Range</th>
                                 <th>Remark</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

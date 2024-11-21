@@ -6,18 +6,20 @@ use App\Helpers\Qs;
 use App\Http\Requests\MyClass\ClassCreate;
 use App\Http\Requests\MyClass\ClassUpdate;
 use App\Repositories\MyClassRepo;
+use App\Repositories\SchoolRepo;
 use App\Repositories\UserRepo;
 use App\Http\Controllers\Controller;
 
 class MyClassController extends Controller
 {
-    protected $my_class, $user;
+    protected $my_class, $user, $school;
 
-    public function __construct(MyClassRepo $my_class, UserRepo $user)
+    public function __construct(MyClassRepo $my_class, UserRepo $user, SchoolRepo $school)
     {
         $this->middleware('teamSA', ['except' => ['destroy',] ]);
         $this->middleware('super_admin', ['only' => ['destroy',] ]);
 
+        $this->school = $school;
         $this->my_class = $my_class;
         $this->user = $user;
     }
@@ -59,7 +61,7 @@ class MyClassController extends Controller
         $data = $req->only(['name']);
         $this->my_class->update($id, $data);
 
-        return Qs::jsonUpdateOk();
+        return back()->with('flash_success', __('msg.update_ok'));
     }
 
     public function destroy($id)
@@ -70,7 +72,8 @@ class MyClassController extends Controller
 
     public function listBySchool($school_id)
     {
-        $d['my_classes'] = $this->my_class->getMC(['school_id' => $school_id]);
+        $d['school'] = $this->school->find($school_id);
+        $d['my_classes'] = $this->my_class->getByCondition(['school_id' => $school_id]);
         $d['class_types'] = $this->my_class->getTypes();
 
         return view('pages.support_team.classes.listBySchool', $d);

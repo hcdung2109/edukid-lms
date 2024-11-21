@@ -71,7 +71,7 @@
                                 <th>Class</th>
                                 <th>Method</th>
                                 <th>Info</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -120,7 +120,7 @@
                                 <th>Class</th>
                                 <th>Method</th>
                                 <th>Info</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

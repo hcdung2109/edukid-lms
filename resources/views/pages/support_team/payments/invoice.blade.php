@@ -28,7 +28,7 @@
                         <th>Pay Now</th>
                         <th>Receipt_No</th>
                         <th>Year</th>
-                        <th>Action</th>
+                        <th>Hành Động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -104,7 +104,7 @@
                         <th>Amount</th>
                         <th>Receipt_No</th>
                         <th>Year</th>
-                        <th>Action</th>
+                        <th>Hành Động</th>
                     </tr>
                     </thead>
                     <tbody>

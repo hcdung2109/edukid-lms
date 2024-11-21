@@ -73,7 +73,7 @@
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Teacher</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

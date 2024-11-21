@@ -169,7 +169,7 @@
                                 <th>Username</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

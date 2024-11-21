@@ -11,10 +11,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form class="ajax-update" data-reload="#page-header" method="post" action="{{ route('classes.update', $c->id) }}">
+                    <form class="" method="post" action="{{ route('classes.update', $c->id) }}">
                         @csrf @method('PUT')
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label font-weight-semibold">Name <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label font-weight-semibold">Tên lớp <span class="text-danger">*</span></label>
                             <div class="col-lg-9">
                                 <input name="name" value="{{ $c->name }}" required type="text" class="form-control" placeholder="Name of Class">
                             </div>
@@ -34,12 +34,12 @@
                         </div>
                       --}}
 
-                        <div class="form-group row">
+<!--                        <div class="form-group row">
                             <label for="class_type_id" class="col-lg-3 col-form-label font-weight-semibold">Class Type</label>
                             <div class="col-lg-9">
                                 <input class="form-control" disabled="disabled" value="{{ $c->class_type->name }}" title="Class Type" type="text">
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Lưu <i class="icon-paperplane ml-2"></i></button>

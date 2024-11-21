@@ -28,7 +28,7 @@
                     <th>From Class</th>
                     <th>To Class</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th>Hành Động</th>
                 </tr>
                 </thead>
                 <tbody>

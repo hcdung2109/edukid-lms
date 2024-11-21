@@ -7,7 +7,7 @@
             <th>Photo</th>
             <th>Name</th>
             <th>Current Session</th>
-            <th>Action</th>
+            <th>Hành Động</th>
         </tr>
         </thead>
         <tbody>

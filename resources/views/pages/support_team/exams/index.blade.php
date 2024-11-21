@@ -23,7 +23,7 @@
                                 <th>Name</th>
                                 <th>Term</th>
                                 <th>Session</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

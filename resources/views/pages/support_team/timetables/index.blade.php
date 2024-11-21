@@ -80,7 +80,7 @@
                                 <th>Class</th>
                                 <th>Type</th>
                                 <th>Year</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -32,7 +32,7 @@
                         <th>ADM_No</th>
                         <th>Section</th>
                         <th>Grad Year</th>
-                        <th>Action</th>
+                        <th>Hành Động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,7 @@
                         <th>ADM_No</th>
                         <th>Section</th>
                         <th>Grad Year</th>
-                        <th>Action</th>
+                        <th>Hành Động</th>
                     </tr>
                     </thead>
                     <tbody>

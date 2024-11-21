@@ -11,7 +11,7 @@
                 <th>TT</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <th>Action</th>
+                <th>Hành Động</th>
             </tr>
             </thead>
             <tbody>

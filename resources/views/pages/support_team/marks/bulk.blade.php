@@ -67,7 +67,7 @@
                     <th>Photo</th>
                     <th>Name</th>
                     <th>ADM_No</th>
-                    <th>Action</th>
+                    <th>Hành Động</th>
                 </tr>
                 </thead>
                 <tbody>

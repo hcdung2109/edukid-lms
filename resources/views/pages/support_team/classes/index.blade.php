@@ -22,7 +22,7 @@
                                 <th>TT</th>
                                 <th>Name</th>
                                 <th>Class Type</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

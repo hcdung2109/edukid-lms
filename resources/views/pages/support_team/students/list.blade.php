@@ -32,7 +32,7 @@
                             <th>ADM_No</th>
                             <th>Section</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Hành Động</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -83,7 +83,7 @@
                                 <th>Name</th>
                                 <th>ADM_No</th>
                                 <th>Email</th>
-                                <th>Action</th>
+                                <th>Hành Động</th>
                             </tr>
                             </thead>
                             <tbody>

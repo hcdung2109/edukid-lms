@@ -20,6 +20,11 @@ class MyClassRepo
         return MyClass::where($data)->with('section');
     }
 
+    public function getByCondition($data)
+    {
+        return MyClass::where($data)->with('section')->get();
+    }
+
     public function find($id)
     {
         return MyClass::find($id);
