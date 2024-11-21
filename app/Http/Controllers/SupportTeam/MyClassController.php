@@ -70,13 +70,24 @@ class MyClassController extends Controller
         return back()->with('flash_success', __('msg.del_ok'));
     }
 
-    public function listBySchool($school_id)
+    public function listClassBySchool($school_id)
     {
         $d['school'] = $this->school->find($school_id);
         $d['my_classes'] = $this->my_class->getByCondition(['school_id' => $school_id]);
         $d['class_types'] = $this->my_class->getTypes();
 
         return view('pages.support_team.classes.listBySchool', $d);
+    }
+
+    public function listSections($class_id)
+    {
+        $d['my_class'] = $this->my_class->find($class_id);
+        $d['school'] = $this->school->find($d['my_class']->school_id);
+        $d['sections'] = $this->my_class->getClassSections($class_id);
+        $d['teachers'] = $this->user->getUserByTypeAndSchool('teacher', $d['my_class']->school_id);
+        $d['class_types'] = $this->my_class->getTypes();
+
+        return view('pages.support_team.classes.listSections', $d);
     }
 
 }

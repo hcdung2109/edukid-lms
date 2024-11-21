@@ -40,7 +40,7 @@
 <script src="{{ asset('global_assets/js/demo_pages/fullcalendar_basic.js') }}"></script>
 
 <!-- /theme JS files -->
-
+<script src="https://cdn.jsdelivr.net/npm/treeselectjs@0.11.0/dist/treeselectjs.umd.js"></script>
 <script src=" {{ asset('assets/js/custom.js') }} "></script>
 <script src=" {{ asset('pspdfkit/pspdfkit.js') }} "></script>
 

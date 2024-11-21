@@ -31,6 +31,11 @@ class UserRepo {
         return User::where(['user_type' => $type])->orderBy('name', 'asc')->get();
     }
 
+    public function getUserByTypeAndSchool($type, $school_id)
+    {
+        return User::where(['user_type' => $type, 'school_id' => $school_id])->orderBy('name', 'asc')->get();
+    }
+
     public function getAllTypes()
     {
         return UserType::all();

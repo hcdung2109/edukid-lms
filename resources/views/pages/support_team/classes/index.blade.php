@@ -1,16 +1,16 @@
 @extends('layouts.master')
-@section('page_title', 'Manage Classes')
+@section('page_title', 'Danh Sách Lớp Học')
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Manage Classes</h6>
+            <h6 class="card-title">Danh Sách Lớp Học</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">
-                <li class="nav-item"><a href="#all-classes" class="nav-link active" data-toggle="tab">Manage Classes</a></li>
+                <li class="nav-item"><a href="#all-classes" class="nav-link active" data-toggle="tab">Danh Sách Lớp Học</a></li>
                 <li class="nav-item"><a href="#new-class" class="nav-link" data-toggle="tab"><i class="icon-plus2"></i> Create New Class</a></li>
             </ul>
 

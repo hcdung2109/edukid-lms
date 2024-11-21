@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page_title', 'Manage Classes')
+@section('page_title', 'Danh Sách Lớp Học')
 @section('content')
 
     <div class="card">
@@ -55,7 +55,6 @@
                 <tr>
                     <th>TT</th>
                     <th>Tên lớp</th>
-                    <th>Hành Động</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,8 +62,9 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $c->name }}</td>
-                        <td>{{ $c->class_type->name }}</td>
                         <td class="text-center">
+                            <a href="{{ route('classes.list.sections', ['class_id' => $c->id]) }}" class="btn btn-warning"><i class="icon-table2"></i> Danh Sách Khóa Học</a>
+
                             @if(Qs::userIsTeamSA())
                                 {{--Edit--}}
                                 <a href="{{ route('classes.edit', $c->id) }}" class="btn btn-primary"><i

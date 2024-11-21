@@ -140,7 +140,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         /*************** Students *****************/
         Route::group(['prefix' => 'classes'], function(){
-            Route::get('list/{school_id}', 'MyClassController@listBySchool')->name('classes.list.school');
+            Route::get('list/{school_id}', 'MyClassController@listClassBySchool')->name('classes.list.school');
+            Route::get('list-section/{class_id}', 'MyClassController@listSections')->name('classes.list.sections');
         });
 
         Route::resource('categories', 'CategoryController');
